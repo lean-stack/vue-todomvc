@@ -1,5 +1,5 @@
 <template>
-    <input v-model="title" v-on:keyup.enter="createTodo" class="new-todo" placeholder="What needs to be done?" autofocus>
+    <input ref="fld" v-model="title" v-on:keyup.enter="createTodo" class="new-todo" placeholder="What needs to be done?" autofocus>
 </template>
 
 <script>
@@ -16,6 +16,9 @@
                     this.title = '';
                 }
             }
+        },
+        mounted() {
+            this.$refs.fld.focus();
         }
     }
 </script>
