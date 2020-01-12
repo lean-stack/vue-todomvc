@@ -1,6 +1,6 @@
 <template>
     <ul class="todo-list">
-        <TodosItem v-bind:todo="todo" />
+        <TodosItem v-for="todo in todos" v-bind:key="todo.id" v-bind:todo="todo" />
     </ul>
 </template>
 
@@ -10,7 +10,10 @@
         name: "TodosList",
         components: {TodosItem},
         data: () => ({
-            todo: { id: 17, title: 'Template Syntax', completed: false }
+            todos: [
+                { id: 17, title: 'Template Syntax', completed: true },
+                { id: 42, title: 'Find the question', completed: false },
+            ]
         })
     }
 </script>
