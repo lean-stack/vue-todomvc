@@ -1,6 +1,6 @@
 <template>
     <ul class="todo-list">
-        <TodosItem />
+        <TodosItem v-bind:todo="todo" />
     </ul>
 </template>
 
@@ -8,7 +8,10 @@
     import TodosItem from "./TodosItem";
     export default {
         name: "TodosList",
-        components: {TodosItem}
+        components: {TodosItem},
+        data: () => ({
+            todo: { id: 17, title: 'Template Syntax', completed: false }
+        })
     }
 </script>
 

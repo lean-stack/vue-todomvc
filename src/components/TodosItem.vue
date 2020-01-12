@@ -14,10 +14,12 @@
 <script>
     export default {
         name: "TodosItem",
+        props: [
+            'todo'
+        ],
         data: () => ({
             editMode: false,
             editText: '',
-            todo: { id: 17, title: 'Template Syntax', completed: false }
         }),
         methods: {
             toggleCompletedState: function () {
