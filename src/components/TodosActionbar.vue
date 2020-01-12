@@ -21,16 +21,16 @@
 </template>
 
 <script>
-    import {state} from "../state";
+    import {store} from "../state/store";
 
     export default {
         name: "TodosActionbar",
         data: () => ({
-            todos: state.todos
+            state: store.state
         }),
         computed: {
             activeCount: function () {
-                return this.todos.reduce((count, t) => t.completed ? count : count + 1, 0);
+                return this.state.todos.reduce((count, t) => t.completed ? count : count + 1, 0);
             }
         }
     }

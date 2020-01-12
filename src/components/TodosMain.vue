@@ -3,18 +3,18 @@
     <section class="main">
         <input id="toggle-all" class="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
-        <TodosList v-bind:todos="todos" />
+        <TodosList v-bind:todos="state.todos" />
     </section>
 </template>
 
 <script>
     import TodosList from "./TodosList";
-    import {state} from "../state";
+    import {store} from "../state/store";
     export default {
         name: "TodosMain",
         components: {TodosList},
         data: () => ({
-          todos: state.todos
+          state: store.state
         })
     }
 </script>
