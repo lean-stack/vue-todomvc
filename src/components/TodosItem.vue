@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    import {store} from "../state/store";
+
     export default {
         name: "TodosItem",
         props: [
@@ -20,10 +22,11 @@
         data: () => ({
             editMode: false,
             editText: '',
+            store: store
         }),
         methods: {
             toggleCompletedState: function () {
-                this.todo.completed = !this.todo.completed;
+                this.store.toggleTodo(this.todo);
             },
             destroyTodo: function () {
 
