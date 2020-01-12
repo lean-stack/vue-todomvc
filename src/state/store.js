@@ -30,5 +30,14 @@ export const store = {
     toggleTodo (todo) {
         todo.completed = !todo.completed;
         saveTodos(this.state.todos);
+    },
+    updateTodoTitle (todo, title) {
+        todo.title = title;
+        saveTodos(this.state.todos);
+    },
+    removeTodo (todo) {
+        const ix = this.state.todos.indexOf(todo);
+        this.state.todos.splice(ix, 1);
+        saveTodos(this.state.todos);
     }
 };

@@ -29,7 +29,7 @@
                 this.store.toggleTodo(this.todo);
             },
             destroyTodo: function () {
-
+                this.store.removeTodo(this.todo);
             },
             beginEdit: function () {
                 this.editMode = true;
@@ -39,7 +39,12 @@
             commitEdit: function () {
                 if (this.editMode) {
                     this.editMode = false;
-                    this.todo.title = this.editText.trim();
+                    const title = this.editText.trim();
+                    if (title.length === 0) {
+                        this.store.removeTodo(this.todo);
+                    } else {
+                        this.store.updateTodoTitle(this.todo, title);
+                    }
                 }
             },
             cancelEdit: function () {
