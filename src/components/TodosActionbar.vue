@@ -1,7 +1,7 @@
 <template>
     <footer v-if="hasTodos" class="footer">
         <!-- This should be `0 items left` by default -->
-        <span class="todo-count"><strong>{{ activeCount }}</strong> item left</span>
+        <span class="todo-count"><strong>{{ activeCount }}</strong> {{ 'item' | pluralize(activeCount) }} left</span>
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
             <li>
@@ -47,6 +47,11 @@
                 this.state.todos.filter(t => t.completed).forEach(
                     t => this.store.removeTodo(t)
                 );
+            }
+        },
+        filters: {
+            pluralize: function (word, count) {
+                return count === 1 ? word : word + 's';
             }
         }
     }
