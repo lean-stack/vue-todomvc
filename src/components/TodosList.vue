@@ -9,12 +9,7 @@
     export default {
         name: "TodosList",
         components: {TodosItem},
-        data: () => ({
-            todos: [
-                { id: 17, title: 'Template Syntax', completed: true },
-                { id: 42, title: 'Find the question', completed: false },
-            ]
-        })
+        props: ['todos']
     }
 </script>
 

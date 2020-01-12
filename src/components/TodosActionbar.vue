@@ -2,7 +2,7 @@
     <!-- This footer should hidden by default and shown when there are todos -->
     <footer class="footer">
         <!-- This should be `0 items left` by default -->
-        <span class="todo-count"><strong>0</strong> item left</span>
+        <span class="todo-count"><strong>{{ activeCount }}</strong> item left</span>
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
             <li>
@@ -21,8 +21,18 @@
 </template>
 
 <script>
+    import {state} from "../state";
+
     export default {
-        name: "TodosActionbar"
+        name: "TodosActionbar",
+        data: () => ({
+            todos: state.todos
+        }),
+        computed: {
+            activeCount: function () {
+                return this.todos.reduce((count, t) => t.completed ? count : count + 1, 0);
+            }
+        }
     }
 </script>
 
